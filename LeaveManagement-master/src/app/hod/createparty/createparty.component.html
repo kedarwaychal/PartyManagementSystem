@@ -1,0 +1,35 @@
+<button mat-icon-button style="float: right; margin: 5px;" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+<header class="heading">
+Create Party
+</header>
+<form class="m-4">
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Username" name="name" [(ngModel)]="name" required>
+      </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>From date</mat-label>
+      <input matInput name="fromdate" [(ngModel)]="startDate" [matDatepicker]="picker">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>TO date</mat-label>
+      <input matInput name="todate" [(ngModel)]="endDate" [matDatepicker]="picker1">
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field> -->
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Venue</mat-label>
+      <textarea name="reason" [(ngModel)]="reason" matInput placeholder="Venue"></textarea>
+    </mat-form-field>
+</form>
+
+<div class="buttons" align="end">
+  <button (click)="apply()" mat-raised-button color="primary" matDialogClose>Create</button>&nbsp;
+  <button mat-raised-button color="warn" matDialogClose>Cancel</button>
+</div>

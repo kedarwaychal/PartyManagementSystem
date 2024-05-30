@@ -1,0 +1,79 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 col-lg-2">
+      <div class="sidebar">
+        <div class="login-logo">
+          <img src="https://img.freepik.com/premium-vector/alphabetical-letter-e-logo-collection_647881-448.jpg"
+            alt="Institute Logo">
+          <h2>Party Management System</h2>
+        </div>
+        <ul>
+          <li>Home</li>
+          <li>Contact</li>
+          <li class="hover" [routerLink]="['/hoddashboard', 'viewleave']">Party Overview</li>
+        </ul>
+        <button class="btn btn-primary" (click)="toggleMenu()"> Menu</button>
+      </div>
+    </div>
+    <div class="col-md-10 col-lg-10 main">
+      <div class="overview-heading leave-overview ">
+        <h1>Party Overview</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="details">
+            <div class="row">
+              <div class="col-md-6 mb-4 username">Username:{{username | titlecase}}</div>
+              <button class="btn btn-primary" (click)="openDialog()">Create Party</button>
+              <!-- <img [src]="imgurl" alt=""> -->
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <!-- <mat-dialog-actions> -->
+                <button class="btn btn-primary" [routerLink]="['/hoddashboard', 'viewleave']">Party Overview</button>
+                <!-- <button class="btn btn-primary" routerLink='/viewleave'>Staff Overview</button> -->
+                <!-- </mat-dialog-actions> -->
+              </div>
+              <div class="col-md-6 mb-4 mr-auto"> <button class="btn btn-danger" (click)="signout()">Sign Out</button>
+              </div>
+            </div>
+
+          </div>
+          <div class="row mt-4 mb-4">
+            <!-- <ng-container *ngIf="leaveArr.length"> -->
+            <ng-container *ngFor="let leave of leaveArr">
+              <div class="col-lg-6 mb-3">
+                <div class="card">
+                  <div class="card-body font-weight-bold  text-center">
+                    <h1>{{leave.Pname}}</h1>
+                    <p>Party On {{leave.leaveStart}}</p>
+                    <h4 class="font-weight-bolder">Location</h4>
+                    <span>{{leave.leaveReason}}</span>
+                    <div class="row" *ngIf="!(leave.statusLeave == 'Approved') && !(leave.statusLeave == 'Rejected') ">
+                      <div class="col-6 offset-3">
+                        <button class="btn btn-primary btn-block" (click)="onEdit()">Edit Party</button>
+                      </div>
+                      <!-- <div class="col-6">
+                        <button class="btn btn-danger btn-block" (click)="onReject(leave)">Reject</button>
+                      </div> -->
+                    </div>
+                    <!-- </div>
+                              </div> -->
+                    <p class="text-success font-weight-bolder" *ngIf="leave.statusLeave == 'Approved'"><span><i
+                          class="fa fa-check fa-2x mr-2" aria-hidden="true"></i></span><span
+                        class="font">Approved</span></p>
+                    <p class="text-danger font-weight-bolder" *ngIf="leave.statusLeave == 'Rejected'"><span><i
+                          class="fa fa-check fa-2x mr-2" aria-hidden="true"></i></span><span
+                        class="font">Rejected</span></p>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
